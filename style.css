@@ -1,7 +1,8 @@
-/* =========================================================
-   Corte Aqui — estilo.css
-   Paleta extraída da logo: verde do balão de fala + grafite do texto
-   ========================================================= */
+
+
+img{ 
+    width:400px; 
+}
 
 :root {
     --verde: #2bc469;
@@ -28,7 +29,6 @@ body {
     line-height: 1.6;
 }
 
-/* ---------- Cabeçalho ---------- */
 
 header {
     background-color: var(--branco);
@@ -45,12 +45,6 @@ header .logo-icone {
     flex-shrink: 0;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 1.6rem;
-    color: var(--grafite);
-    letter-spacing: -0.5px;
-}
 
 header p {
     margin: 2px 0 0;
@@ -58,7 +52,13 @@ header p {
     font-size: 0.95rem;
 }
 
-/* ---------- Layout principal ---------- */
+#login{
+    display:block; 
+    justify-content:end;
+
+}
+
+
 
 main {
     max-width: 720px;
@@ -94,7 +94,6 @@ ol li, ul li {
     margin-bottom: 8px;
 }
 
-/* ---------- Formulários ---------- */
 
 form {
     display: flex;
@@ -143,7 +142,7 @@ input[type="radio"] {
     margin-right: 6px;
 }
 
-/* ---------- Botões interativos ---------- */
+
 
 button {
     margin-top: 20px;
@@ -170,7 +169,7 @@ button:active {
     transform: scale(0.97);
 }
 
-/* ---------- Links ---------- */
+
 
 a {
     color: var(--verde-escuro);
@@ -184,7 +183,7 @@ a:hover {
     text-decoration: underline;
 }
 
-/* ---------- Rodapé ---------- */
+
 
 footer {
     text-align: center;
