@@ -1,0 +1,198 @@
+/* =========================================================
+   Corte Aqui — estilo.css
+   Paleta extraída da logo: verde do balão de fala + grafite do texto
+   ========================================================= */
+
+:root {
+    --verde: #2bc469;
+    --verde-escuro: #219c53;
+    --verde-claro: #e7f8ee;
+    --grafite: #313842;
+    --grafite-suave: #5b6472;
+    --branco: #ffffff;
+    --fundo: #f5f7f6;
+    --borda: #dfe6e2;
+    --sombra: rgba(49, 56, 66, 0.12);
+    --raio: 16px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--fundo);
+    color: var(--grafite);
+    line-height: 1.6;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+header {
+    background-color: var(--branco);
+    border-bottom: 1px solid var(--borda);
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+header .logo-icone {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 1.6rem;
+    color: var(--grafite);
+    letter-spacing: -0.5px;
+}
+
+header p {
+    margin: 2px 0 0;
+    color: var(--grafite-suave);
+    font-size: 0.95rem;
+}
+
+/* ---------- Layout principal ---------- */
+
+main {
+    max-width: 720px;
+    margin: 40px auto;
+    padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+section {
+    background-color: var(--branco);
+    border: 1px solid var(--borda);
+    border-radius: var(--raio);
+    padding: 28px 32px;
+    box-shadow: 0 4px 14px var(--sombra);
+}
+
+h2 {
+    margin-top: 0;
+    color: var(--grafite);
+    font-size: 1.3rem;
+    border-left: 4px solid var(--verde);
+    padding-left: 12px;
+}
+
+ol, ul {
+    padding-left: 22px;
+    margin: 12px 0 0;
+}
+
+ol li, ul li {
+    margin-bottom: 8px;
+}
+
+/* ---------- Formulários ---------- */
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--grafite);
+    margin-top: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="date"],
+input[type="time"],
+select {
+    padding: 12px 14px;
+    border: 1px solid var(--borda);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: var(--grafite);
+    background-color: var(--fundo);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: var(--verde);
+    box-shadow: 0 0 0 3px var(--verde-claro);
+    background-color: var(--branco);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+    accent-color: var(--verde);
+    width: 16px;
+    height: 16px;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+/* ---------- Botões interativos ---------- */
+
+button {
+    margin-top: 20px;
+    align-self: flex-start;
+    background-color: var(--verde);
+    color: var(--branco);
+    border: none;
+    border-radius: 999px;
+    padding: 14px 34px;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(43, 196, 105, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+button:hover {
+    transform: scale(1.06);
+    background-color: var(--verde-escuro);
+    box-shadow: 0 8px 18px rgba(43, 196, 105, 0.45);
+}
+
+button:active {
+    transform: scale(0.97);
+}
+
+/* ---------- Links ---------- */
+
+a {
+    color: var(--verde-escuro);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--grafite);
+    text-decoration: underline;
+}
+
+/* ---------- Rodapé ---------- */
+
+footer {
+    text-align: center;
+    padding: 26px 20px 40px;
+    color: var(--grafite-suave);
+    font-size: 0.85rem;
+}
+
+footer p {
+    margin: 4px 0;
+}

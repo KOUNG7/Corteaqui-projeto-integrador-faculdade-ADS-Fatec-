@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Corte Aqui - Agendamento</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+
+    <header>
+        <svg class="logo-icone" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+            <path d="M50 5 C25 5 5 23 5 45 C5 63 17 78 35 83 L35 95 L50 82 C51 82 52 82 50 82 C75 82 95 65 95 45 C95 23 75 5 50 5 Z" fill="#2bc469"/>
+            <line x1="35" y1="32" x2="65" y2="58" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+            <line x1="65" y1="32" x2="35" y2="58" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+            <circle cx="33" cy="60" r="6" fill="none" stroke="#ffffff" stroke-width="4"/>
+            <circle cx="67" cy="60" r="6" fill="none" stroke="#ffffff" stroke-width="4"/>
+        </svg>
+        <div>
+            <h1>Corte Aqui</h1>
+            <p>Agende seu horário sem complicação</p>
+        </div>
+    </header>
+
+    <main>
+
+        <section>
+            <h2>Como funciona</h2>
+            <ol>
+                <li>Escolha o serviço que deseja realizar.</li>
+                <li>Selecione a data e o horário disponíveis.</li>
+                <li>Confirme seu agendamento e receba a confirmação pelo WhatsApp.</li>
+            </ol>
+        </section>
+
+        <section>
+            <h2>Por que agendar pelo Corte Aqui?</h2>
+            <ul>
+                <li>Chega de mensagens perdidas ou horários batendo um com o outro.</li>
+                <li>Agende de onde estiver, a qualquer hora do dia.</li>
+                <li>Confirmação automática por WhatsApp, direto no seu celular.</li>
+                <li>Pagamento simples: escolha entre Pix ou cartão na hora de finalizar.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Faça seu agendamento</h2>
+
+            <form action="#" method="post">
+
+                <label for="nome">Nome completo:</label>
+                <input type="text" id="nome" name="nome" required>
+
+                <label for="telefone">Telefone (WhatsApp):</label>
+                <input type="tel" id="telefone" name="telefone" required>
+
+                <label for="servico">Serviço:</label>
+                <select id="servico" name="servico" required>
+                    <option value="">Selecione um serviço</option>
+                    <option value="corte">Corte de cabelo</option>
+                    <option value="escova">Escova</option>
+                    <option value="coloracao">Coloração</option>
+                    <option value="hidratacao">Hidratação</option>
+                    <option value="outro">Outro</option>
+                </select>
+
+                <label for="data">Data:</label>
+                <input type="date" id="data" name="data" required>
+
+                <label for="horario">Horário:</label>
+                <input type="time" id="horario" name="horario" required>
+
+                <label>Forma de pagamento:</label>
+                <div>
+                    <label><input type="radio" id="pix" name="pagamento" value="pix"> Pix</label>
+                    &nbsp;&nbsp;
+                    <label><input type="radio" id="cartao" name="pagamento" value="cartao"> Cartão</label>
+                </div>
+
+                <button type="submit">Confirmar agendamento</button>
+
+            </form>
+
+            <p>Seus dados e horários ficam organizados em um só lugar — sem bagunça de agenda, sem retrabalho para o salão.</p>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Desenvolvido para acabar com a desorganização do agendamento manual, dando mais controle para o profissional e mais praticidade para o cliente.</p>
+        <p>&copy; 2026 Corte Aqui - Projeto Integrador FATEC Guarulhos</p>
+    </footer>
+
+</body>
+</html>
