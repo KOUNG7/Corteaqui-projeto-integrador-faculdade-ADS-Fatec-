@@ -33,16 +33,14 @@ body {
 header {
     background-color: var(--branco);
     border-bottom: 1px solid var(--borda);
-    padding: 24px 32px;
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 20px;
 }
 
 header .logo-icone {
     width: 44px;
     height: 44px;
-    flex-shrink: 0;
 }
 
 
@@ -162,14 +160,9 @@ button {
 button:hover {
     transform: scale(1.06);
     background-color: var(--verde-escuro);
-    box-shadow: 0 8px 18px rgba(43, 196, 105, 0.45);
+    box-shadow: 0 8px 18px var(--sombra);
+
 }
-
-button:active {
-    transform: scale(0.97);
-}
-
-
 
 a {
     color: var(--verde-escuro);
@@ -180,7 +173,7 @@ a {
 
 a:hover {
     color: var(--grafite);
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 
