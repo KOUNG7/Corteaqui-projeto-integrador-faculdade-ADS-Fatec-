@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | Corte Aqui</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+        <header class="cabecalho">
+      <img class="logocorteaqui" src="corteaqui.ico" alt="logo do sistema de agendamento"> 
+      <nav class="navagendamento"> 
+      <h2><a href="index.html" target="_blank">Início</a></h2>
+      <h2><a href="index.html" target="_blank">Serviços</a></h2>
+      <h2><a href="index.html" target="_blank">Contatos</a></h2>
+      </nav> 
+      <div class="botao">
+        <h2><a href="entrar.html" target="_blank">Entrar</a></h2>
+        <h2><a href="index.html" target="_blank">Criar Conta</a></h2>
+      </div>
+      
+      <img class="logosalao"src="logo-newkids.png" alt="logo do salão infantil">
+    </header> 
+    
+  <main class="agendamento">
+    <section class="apresentacao">
+      <h1>Corte Aqui</h1>
+      <div> 
+      <p>O Corte Aqui é um sistema de agendamento online criado em parceria com o salão infantil New Kids. A ideia é facilitar a vida de quem cuida do pequeno: em vez de ligar e esperar, você escolhe os serviços, o dia e o horário em poucos cliques.</p>
+      <p>Para o salão, o sistema ajuda a organizar a agenda e a manter todos os atendimentos em um só lugar.</p>
+      </div>
+    </section>
+
+    <form class="formulario" action="#" method="post">
+      <h2>Agende seu horário</h2>
+
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" name="nome" autocomplete="name" required>
+
+      <label for="telefone">Telefone</label>
+      <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 90000-0000" required>
+
+      <label for="data">Data</label>
+      <input type="date" id="data" name="data" required>
+
+      <label for="horario">Horário</label>
+      <input type="time" id="horario" name="horario" required>
+
+      <label for="pagamento">Forma de pagamento</label>
+      <select id="pagamento" name="pagamento" required>
+        <option value="">Escolha uma opção</option>
+        <option value="pix">Pix</option>
+        <option value="dinheiro">Dinheiro</option>
+        <option value="credito">Cartão de crédito</option>
+        <option value="debito">Cartão de débito</option>
+      </select>
+
+      <section class="servicos">
+        <h2>Serviços</h2>
+        <fieldset>
+          <legend>Escolha um ou mais</legend>
+          <label><input type="checkbox" name="servico" value="corte"> Corte</label>
+          <label><input type="checkbox" name="servico" value="franja"> Franja</label>
+          <label><input type="checkbox" name="servico" value="penteado"> Penteado</label>
+          <label><input type="checkbox" name="servico" value="escova"> Escova</label>
+          <label><input type="checkbox" name="servico" value="hidratacao"> Hidratação</label>
+        </fieldset>
+      </section>
+
+      <button type="submit" class="confirmar">Confirmar agendamento</button>
+    </form>
+  </main>
+
+</body>
+</html> 
