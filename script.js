@@ -34,8 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       try {
         // Aqui você colocará a URL do Webhook do Make.com quando configurar
-        const webhookUrl = 'https://hook.us2.make.com/sq8yiis3s7sfil6ttevynfwsrq8l76qw'; 
-
+        const webhookUrl = "https://hook.us2.make.com/oqf1r795u91dlxqv5agctce5xosi1stv";
         const resposta = await fetch(webhookUrl, {
           method: "POST",
           headers: {
