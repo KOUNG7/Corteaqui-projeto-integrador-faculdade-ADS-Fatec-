@@ -6,8 +6,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const avisoHorarios = document.getElementById('aviso-horarios');
     const checkboxesServicos = document.querySelectorAll('input[name="servico"]');
 
-    // Cole aqui a URL do módulo Webhook 1 do cenário "Integration Webhooks, Google Calendar".
-    // As duas ações (ver horários e agendar) usam a mesma URL; o campo "acao" diz qual é qual.
+    // URL do Webhook unificada do Make
     const URL_MAKE = "https://hook.us2.make.com/xgazkaxtc99668av76qg2cyqfe6ajowh";
     const URL_HORARIOS_OCUPADOS = URL_MAKE;
     const URL_AGENDAMENTO = URL_MAKE;
@@ -222,7 +221,7 @@ document.addEventListener("DOMContentLoaded", function () {
         horarioSelect.addEventListener('change', atualizarHorarioTermino);
     }
 
-    // Ao mudar os serviços, recalcula a lista (a duração muda quais horários cabem)
+    // Ao mudar os serviços, recalcula a lista
     checkboxesServicos.forEach(chk => {
         chk.addEventListener('change', () => {
             if (dataInput && dataInput.value) {
@@ -259,7 +258,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 pagamento: document.getElementById("pagamento") ? document.getElementById("pagamento").value : ""
             };
 
-            // Checagem final: alguém pode ter reservado esse horário enquanto o formulário estava aberto
+            // Checagem final de conflito de horários
             if (dados.data && dados.horario && horarioFimCalculado) {
                 const ocupadosAgora = await buscarHorariosOcupados(dados.data);
                 horariosOcupadosCache = ocupadosAgora;
