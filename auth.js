@@ -13,6 +13,7 @@ function webhookNaoConfigurado(url) {
 document.addEventListener("DOMContentLoaded", function () {
     const formCadastro = document.getElementById("formCadastro");
     const formLogin = document.getElementById("formLogin");
+    const formAgendamento = document.getElementById("formAgendamento"); // Se houver formulário de agendamento na tela
     const btnGoogleCustom = document.getElementById("btnGoogleCustom");
 
     // ---------------------------------------------------------------------
@@ -51,7 +52,6 @@ document.addEventListener("DOMContentLoaded", function () {
                     })
                 });
 
-                // O Make responde 200 com {"ok": true} ou 409 com {"ok": false, "mensagem": "..."}
                 const resultado = await response.json().catch(() => ({}));
 
                 if (response.ok && resultado.ok === true) {
@@ -76,11 +76,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (formLogin) {
         formLogin.addEventListener("submit", async function (e) {
             e.preventDefault();
-
-            if (webhookNaoConfigurado(WEBHOOK_LOGIN)) {
-                alert("O login ainda não foi configurado. Falta colocar a URL do webhook de login no auth.js.");
-                return;
-            }
 
             const email = document.getElementById("email").value.trim().toLowerCase();
             const senha = document.getElementById("senha").value;
@@ -127,7 +122,60 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // ---------------------------------------------------------------------
-    // 3. ACIONAR POPUP DO GOOGLE AO CLICAR NO BOTÃO PERSONALIZADO
+    // 3. FLUXO DE AGENDAMENTO (agendamento.html) - ENVIANDO O SERVIÇO
+    // ---------------------------------------------------------------------
+    if (formAgendamento) {
+        formAgendamento.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const usuarioSalvo = JSON.parse(localStorage.getItem("usuarioCorteAqui") || "{}");
+            const servicoEscolhido = localStorage.getItem("servicoEscolhido") || document.getElementById("servico")?.value || "Corte padrão";
+            const dataAgendamento = document.getElementById("data")?.value;
+            const horarioAgendamento = document.getElementById("horario")?.value;
+
+            const dadosAgendamento = {
+                acao: "agendar",
+                nome: usuarioSalvo.nome || "Cliente",
+                email: usuarioSalvo.email || "",
+                telefone: usuarioSalvo.telefone || "",
+                servico: servicoEscolhido,
+                data: dataAgendamento,
+                horario: horarioAgendamento
+            };
+
+            const btnSubmit = formAgendamento.querySelector("button[type='submit']");
+            const textoOriginal = btnSubmit.textContent;
+            btnSubmit.disabled = true;
+            btnSubmit.textContent = "Agendando...";
+
+            try {
+                const response = await fetch(WEBHOOK_CADASTRO, { // Pode usar a mesma URL unificada do Make
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(dadosAgendamento)
+                });
+
+                const resultado = await response.json().catch(() => ({}));
+
+                if (response.ok && resultado.ok === true) {
+                    alert("Agendamento realizado com sucesso e sincronizado com a agenda!");
+                    localStorage.removeItem("servicoEscolhido"); // Limpa após o uso
+                    window.location.href = "index.html";
+                } else {
+                    alert(resultado.mensagem || "Não foi possível realizar o agendamento.");
+                }
+            } catch (error) {
+                console.error("Erro no agendamento:", error);
+                alert("Erro de conexão com o servidor.");
+            } finally {
+                btnSubmit.disabled = false;
+                btnSubmit.textContent = textoOriginal;
+            }
+        });
+    }
+
+    // ---------------------------------------------------------------------
+    // 4. ACIONAR POPUP DO GOOGLE AO CLICAR NO BOTÃO PERSONALIZADO
     // ---------------------------------------------------------------------
     if (btnGoogleCustom) {
         btnGoogleCustom.addEventListener("click", function () {
@@ -143,10 +191,10 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     }
-});
+}); // <--- CHAVE DE FECHAMENTO DO DOMContentLoaded CORRETAMENTE ADICIONADA AQUI
 
 // =========================================================================
-// 4. CALLBACK OFICIAL DO GOOGLE (Recebe o token JWT após o usuário logar)
+// 5. CALLBACK OFICIAL DO GOOGLE (Recebe o token JWT após o usuário logar)
 // =========================================================================
 function decodificarJwtGoogle(token) {
     const base64Url = token.split(".")[1];
