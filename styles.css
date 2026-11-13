@@ -102,20 +102,59 @@ body {
 /* cabeçalho termina aqui */
 
 
-/* ---------- Agendamento ---------- */
-.agendamento {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 48px;
-    align-items: start;
-    padding: 64px 48px;
-    background-color: white;
+/* ---------- Peças compartilhadas (selos e etiquetas) ---------- */
+.selo {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: var(--roxo);
+    color: #FFFFFF;
+    font-size: 0.9rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.selo-amarelo {
+    background: var(--amarelo);
     color: var(--azul-escuro);
+}
+
+.etiqueta {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 999px;
+    background: #F3E6F7;
+    color: var(--roxo-escuro);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* ---------- Página de agendamento ---------- */
+.agendamento {
+    background: #FFFFFF;
+    color: var(--azul-escuro);
+}
+
+/* Faixa de cima: apresentação + horário de funcionamento */
+.agendamento-topo {
+    padding: 56px 48px;
+    background: var(--cor-destaque);
+}
+
+.agendamento-topo-conteudo {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 48px;
+    align-items: center;
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .apresentacao h1 {
     margin: 0 0 16px;
-    font-size: 70px;
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.1;
     color: var(--verde-escuro);
     transition: color 0.3s;
 }
@@ -125,28 +164,313 @@ body {
 }
 
 .apresentacao p {
-    max-width: 52ch;
-    margin: 0 0 16px;
-    font-size: 25px;
+    max-width: 56ch;
+    margin: 0 0 14px;
+    font-size: 1.2rem;
     line-height: 1.7;
 }
 
-.formulario {
-    display: flex;
-    flex-direction: column;
-    padding: 32px;
-    background: #FFFFFF;
-    border: 1px solid var(--verde-escuro);
-    border-radius: 20px;
-    accent-color: var(--roxo);
+.apresentacao p:last-child {
+    margin-bottom: 0;
 }
 
-.formulario h2 {
-    margin: 0 0 24px;
+/* Tabela de horário de funcionamento */
+.tabela-horarios-container h2 {
+    margin: 0 0 12px;
+    font-size: 1.25rem;
+    color: var(--roxo);
+}
+
+.tabela-horarios {
+    width: 100%;
+    border: 2px solid var(--roxo);
+    border-radius: 12px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.tabela-horarios th,
+.tabela-horarios td {
+    padding: 12px 16px;
+    border-bottom: 1px solid #E3D0EA;
+    text-align: left;
+    font-size: 1rem;
+}
+
+.tabela-horarios thead th {
+    background: var(--roxo);
+    color: #FFFFFF;
+}
+
+.tabela-horarios td {
+    font-weight: 600;
     color: var(--verde-escuro);
 }
 
+.tabela-horarios td:last-child {
+    text-align: right;
+}
+
+.tabela-horarios tbody tr:nth-child(even) {
+    background: #F8F1FB;
+}
+
+.tabela-horarios tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+/* Conteúdo principal: serviços, WhatsApp e formulário, todos na mesma largura */
+.agendamento-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 56px 48px 72px;
+}
+
+.agendamento-conteudo h2 {
+    margin: 0 0 20px;
+    font-size: 1.75rem;
+    color: var(--roxo);
+}
+
+/* ---------- Tabela de serviços (preços) ---------- */
+.precos-grade {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 32px;
+    align-items: stretch;
+}
+
+.tabela-precos {
+    width: 100%;
+    border: 2px solid var(--roxo);
+    border-radius: 16px;
+    border-collapse: separate;
+    border-spacing: 0;
+    overflow: hidden;
+    background: #FFFFFF;
+}
+
+.tabela-precos th,
+.tabela-precos td {
+    padding: 14px 16px;
+    border-bottom: 1px solid #E3D0EA;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.tabela-precos thead th {
+    background: var(--roxo);
+    color: #FFFFFF;
+    font-size: 0.95rem;
+}
+
+.tabela-precos tbody th {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--azul-escuro);
+}
+
+.tabela-precos tbody th .etiqueta {
+    display: block;
+    width: fit-content;
+    margin-top: 6px;
+    font-size: 0.8rem;
+}
+
+.tabela-precos td {
+    color: #5B6169;
+}
+
+.tabela-precos th:last-child,
+.tabela-precos td:last-child {
+    text-align: right;
+}
+
+.tabela-precos tbody tr:nth-child(even) {
+    background: #F8F1FB;
+}
+
+.tabela-precos tbody tr:last-child th,
+.tabela-precos tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.tabela-precos .preco {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--verde-escuro);
+}
+
+.tabela-precos .preco-promo {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+    font-size: 0.8rem;
+    font-weight: 700;
+    white-space: nowrap;
+}
+
+.tabela-precos .preco-obs {
+    display: block;
+    margin-top: 2px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #5B6169;
+}
+
+/* Cartão de destaque do desconto de quartas e quintas */
+.promo-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 8px;
+    min-width: 0;
+    padding: 32px;
+    border-radius: 20px;
+    background: linear-gradient(160deg, var(--roxo) 0%, var(--roxo-escuro) 100%);
+    color: #FFFFFF;
+}
+
+.promo-card p {
+    margin: 0;
+}
+
+.promo-dias {
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.promo-de {
+    margin-top: 8px;
+    font-size: 1.05rem;
+    color: #F3E6F7;
+}
+
+.promo-de s {
+    font-weight: 600;
+    color: #E3D0EA;
+}
+
+.promo-preco strong {
+    display: block;
+    font-size: clamp(2.5rem, 4.2vw, 3.25rem);
+    font-weight: 800;
+    line-height: 1;
+    white-space: nowrap;
+    color: var(--amarelo);
+}
+
+.promo-desc {
+    margin-top: 8px;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #F3E6F7;
+}
+
+/* ---------- WhatsApp na página de agendamento ---------- */
+.whatsapp-agendamento {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 24px;
+    padding: 28px 32px;
+    background: #F1FBF5;
+    border: 2px solid var(--verde-escuro);
+    border-radius: 20px;
+}
+
+.whatsapp-texto {
+    flex: 1 1 420px;
+}
+
+.agendamento-conteudo .whatsapp-agendamento h2 {
+    margin: 0 0 8px;
+    color: var(--verde-escuro);
+}
+
+.whatsapp-agendamento p {
+    max-width: 60ch;
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+
+.botao-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 16px 28px;
+    border-radius: 999px;
+    background: var(--verde-escuro);
+    color: #FFFFFF;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+.botao-whatsapp svg {
+    width: 24px;
+    height: 24px;
+}
+
+.botao-whatsapp:hover {
+    background: var(--roxo-escuro);
+    transform: translateY(-2px);
+}
+
+.botao-whatsapp:focus-visible {
+    outline: 3px solid var(--roxo);
+    outline-offset: 3px;
+}
+
+/* ---------- Formulário ---------- */
+.formulario {
+    padding: 36px;
+    background: #FFFFFF;
+    border: 2px solid var(--verde-escuro);
+    border-radius: 20px;
+    box-shadow: 0 8px 24px rgba(77, 9, 94, 0.08);
+    accent-color: var(--roxo);
+}
+
+.formulario-grade {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 20px 24px;
+}
+
+.campo {
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+.campo-metade {
+    grid-column: span 3;
+}
+
+.campo-terco {
+    grid-column: span 2;
+}
+
+.campo-total {
+    grid-column: 1 / -1;
+}
+
 .formulario label {
+    display: block;
     margin-bottom: 6px;
     font-weight: 600;
 }
@@ -155,7 +479,6 @@ body {
 .formulario select {
     width: 100%;
     height: 48px;
-    margin-bottom: 18px;
     padding: 0 14px;
     border: 1px solid var(--verde-escuro);
     border-radius: 10px;
@@ -177,27 +500,40 @@ body {
     color: #FFFFFF;
 }
 
-.servicos {
-    margin-bottom: 24px;
+/* Horários ocupados */
+.formulario option.horario-ocupado {
+    color: #B00020;
+    background: #F3F3F3;
 }
 
-.servicos h2 {
-    margin: 0 0 12px;
+.aviso-horarios {
+    margin: 8px 0 0;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: #B00020;
 }
 
-.servicos fieldset {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-    gap: 10px;
-    margin: 0;
-    padding: 0;
-    border: 0;
+.aviso-horarios:empty {
+    display: none;
 }
 
+/* Serviços dentro do formulário */
 .servicos legend {
-    margin-bottom: 10px;
+    margin-bottom: 8px;
     padding: 0;
+    font-weight: 600;
+    color: var(--azul-escuro);
+}
+
+.servicos legend span {
+    font-weight: 400;
     color: #5B6169;
+}
+
+.servicos-opcoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 10px;
 }
 
 .servicos label {
@@ -205,9 +541,10 @@ body {
     align-items: center;
     gap: 8px;
     margin: 0;
-    padding: 10px 14px;
+    padding: 12px 14px;
     border: 2px solid var(--verde-escuro);
     border-radius: 10px;
+    font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s, border-color 0.2s;
 }
@@ -231,7 +568,9 @@ body {
 }
 
 .confirmar {
+    width: 100%;
     height: 52px;
+    margin-top: 28px;
     border: 0;
     border-radius: 999px;
     background: var(--verde-escuro);
@@ -418,8 +757,6 @@ body {
     outline-offset: 2px;
 }
 
-
-
 .link-pular {
     align-self: center;
     font-size: 18px;
@@ -498,7 +835,6 @@ body {
 
 .sobre,
 .servicos-destaque,
-.tabela-servicos,
 .contato,
 .avaliacoes {
     padding: 64px 48px;
@@ -507,7 +843,6 @@ body {
 
 .sobre h2,
 .servicos-destaque h2,
-.tabela-servicos h2,
 .contato h2,
 .avaliacoes h2 {
     margin: 0 0 24px;
@@ -518,7 +853,6 @@ body {
 
 .sobre,
 .servicos-destaque,
-.tabela-servicos,
 .contato,
 .avaliacoes {
     border-top: 3px solid;
@@ -552,83 +886,210 @@ body {
 }
 
 
-.cartoes {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
+/* ---------- Nossos serviços: faixa de desconto e carrossel ---------- */
+.servicos-destaque h2 {
+    text-align: center;
 }
 
-.cartao-servico {
+.faixa-promo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    padding: 14px 20px;
+    background: #FFF4D6;
+    border: 2px solid var(--amarelo);
+    border-radius: 14px;
+    font-size: 1.125rem;
+    text-align: center;
+}
+
+.faixa-promo s {
+    color: #5B6169;
+}
+
+.carrossel {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.carrossel-janela {
+    position: relative;
     overflow: hidden;
     background: #FFFFFF;
     border: 2px solid var(--verde-escuro);
-    border-radius: 16px;
-    text-align: center;
-    transition: transform 0.2s;
+    border-radius: 20px;
 }
 
-.cartao-servico:hover {
-    transform: translateY(-4px);
+.carrossel-pista {
+    display: flex;
+    transition: transform 0.5s ease;
+    touch-action: pan-y;
 }
 
-.cartao-servico h3 {
-    margin: 0;
-    padding: 16px;
-    font-size: 1.25rem;
+.slide {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
-.cartao-servico img {
-    display: block;
+.slide-foto {
+    position: relative;
+    min-height: 440px;
+    background: #F3E6F7;
+}
+
+.slide-foto img {
+    position: absolute;
+    inset: 0;
     width: 100%;
-    aspect-ratio: 4 / 3;
+    height: 100%;
     object-fit: cover;
+    object-position: center 30%;
 }
 
-
-.tabela-servicos h2 {
-    text-align: center;
+.slide-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 40px 80px 40px 40px;
 }
 
-.tabela-servicos table {
-    width: min(100%, 720px);
-    margin: 0 auto;
-    border: 2px solid var(--roxo);
-    border-radius: 16px;
-    border-collapse: separate;
-    border-spacing: 0;
-    overflow: hidden;
+.slide-info h3 {
+    margin: 0;
+    font-size: 2rem;
+    line-height: 1.15;
+    color: var(--roxo);
 }
 
-.tabela-servicos th,
-.tabela-servicos td {
-    padding: 16px;
-    border-bottom: 1px solid #E3D0EA;
-    text-align: left;
-    font-size: 1.125rem;
+.slide-preco {
+    margin: 0;
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    color: var(--verde-escuro);
 }
 
-.tabela-servicos thead th {
+.slide-obs {
+    margin: 0;
+    font-size: 1rem;
+    color: #5B6169;
+}
+
+.slide-promo {
+    margin: 0;
+    padding: 8px 14px;
+    border-radius: 12px;
+    background: var(--amarelo);
+    color: var(--azul-escuro);
+    font-weight: 700;
+}
+
+.slide-info .botao-agendar {
+    margin-top: 8px;
+}
+
+/* Setas laterais, sobre o carrossel */
+.carrossel-seta {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    display: grid;
+    place-items: center;
+    width: 44px;
+    height: 44px;
+    padding: 0;
+    background: rgba(255, 255, 255, 0.92);
+    border: 0;
+    border-radius: 50%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+    color: var(--roxo);
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.carrossel-seta svg {
+    width: 22px;
+    height: 22px;
+}
+
+.carrossel-seta-anterior {
+    left: 14px;
+}
+
+.carrossel-seta-proximo {
+    right: 14px;
+}
+
+.carrossel-seta:hover {
     background: var(--roxo);
     color: #FFFFFF;
 }
 
-.tabela-servicos td,
-.tabela-servicos th:last-child {
-    text-align: right;
+.carrossel-seta:focus-visible,
+.ponto:focus-visible {
+    outline: 3px solid var(--roxo);
+    outline-offset: 2px;
 }
 
-.tabela-servicos td {
-    font-weight: 700;
-    color: var(--verde-escuro);
+/* Rodapé do carrossel: bolinhas */
+.carrossel-rodape {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
 }
 
-.tabela-servicos tbody tr:nth-child(even) {
-    background: #F8F1FB;
+.carrossel-pontos {
+    display: flex;
+    align-items: center;
 }
 
-.tabela-servicos tbody tr:last-child th,
-.tabela-servicos tbody tr:last-child td {
-    border-bottom: 0;
+.ponto {
+    position: relative;
+    width: 24px;
+    height: 24px;
+    padding: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    transition: width 0.3s;
+}
+
+.ponto::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 10px;
+    height: 10px;
+    border-radius: 999px;
+    background: #9A6BAA;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, background-color 0.3s;
+}
+
+.ponto.ativo {
+    width: 40px;
+}
+
+.ponto.ativo::before {
+    width: 26px;
+    background: var(--roxo);
+}
+
+
+.cartoes {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
 }
 
 
@@ -686,6 +1147,39 @@ body {
 }
 
 
+/* ---------- Avaliações ---------- */
+.avaliacoes-topo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.avaliacoes .avaliacoes-topo h2 {
+    margin: 0;
+}
+
+.selo-google {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 18px 8px 12px;
+    background: #FFFFFF;
+    border: 1px solid #DADCE0;
+    border-radius: 999px;
+    box-shadow: 0 1px 4px rgba(60, 64, 67, 0.2);
+    color: #3C4043;
+    font-weight: 600;
+}
+
+.selo-google img {
+    display: block;
+    width: 28px;
+    height: 28px;
+}
+
 .avaliacao {
     margin: 0;
     padding: 24px;
@@ -731,12 +1225,44 @@ body {
 }
 
 
+@media (max-width: 900px) {
+    .agendamento-topo-conteudo,
+    .precos-grade {
+        grid-template-columns: 1fr;
+    }
 
+    /* No celular, o desconto aparece antes da tabela */
+    .promo-card {
+        order: -1;
+    }
+}
 
 @media (max-width: 800px) {
-    .agendamento {
-        grid-template-columns: 1fr;
+    .agendamento-topo {
         padding: 32px 20px;
+    }
+
+    .agendamento-conteudo {
+        gap: 40px;
+        padding: 32px 20px 48px;
+    }
+
+    .formulario {
+        padding: 24px 20px;
+    }
+
+    .campo-metade,
+    .campo-terco {
+        grid-column: 1 / -1;
+    }
+
+    .whatsapp-agendamento {
+        padding: 22px 20px;
+    }
+
+    .tabela-precos th,
+    .tabela-precos td {
+        padding: 12px 10px;
     }
 
     .destaque,
@@ -747,9 +1273,28 @@ body {
     }
 
     .servicos-destaque,
-    .tabela-servicos,
     .avaliacoes {
         padding: 32px 20px;
+    }
+
+    .slide {
+        grid-template-columns: 1fr;
+    }
+
+    .slide-foto {
+        min-height: 260px;
+    }
+
+    .slide-info {
+        padding: 24px 20px;
+    }
+
+    .slide-info h3 {
+        font-size: 1.6rem;
+    }
+
+    .slide-preco {
+        font-size: 2rem;
     }
 }
 
@@ -761,10 +1306,13 @@ body {
     .entrarmain,
     .botao-entrar,
     .btn-google,
-    .cartao-servico,
     .botao-agendar,
-    .botao-link {
+    .botao-link,
+    .botao-whatsapp,
+    .carrossel-pista,
+    .carrossel-seta,
+    .ponto,
+    .ponto::before {
         transition: none;
     }
 }
-

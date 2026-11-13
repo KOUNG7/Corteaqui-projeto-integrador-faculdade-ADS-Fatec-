@@ -12,20 +12,18 @@
 
     <nav class="navagendamento">
       <h2><a href="index.html">Início</a></h2>
-      <h2><a href="agendamento.html" target="_blank">Agendamento</a></h2>
-     
+      <h2><a href="agendamento.html">Agendamento</a></h2>
     </nav>
 
     <div class="botao">
-     
       <h2><a href="Cadastrar.html">Criar conta</a></h2>
     </div>
 
     <img class="logosalao" src="logo-newkids.png" alt="Salão infantil New Kids">
   </header>
 
-    <main class="entrarmain">
-    <form class="entrar" action="#" method="post">
+  <main class="entrarmain">
+    <form class="entrar" id="formLogin" action="#" method="post">
       <div class="nomemarca">
         <h1>CorteAqui</h1>
         <p>Entre para agendar o seu horário</p>
@@ -43,7 +41,7 @@
 
       <button class="botao-entrar" type="submit">Entrar</button>
 
-      <p class="conta">Não tem conta? <a href="cadastro.html">Criar conta</a></p>
+      <p class="conta">Não tem conta? <a href="Cadastrar.html">Criar conta</a></p>
 
       <div class="pular">
         <hr>
@@ -51,11 +49,22 @@
         <hr>
       </div>
 
-      <button class="btn-google" type="button">
+      <div id="g_id_onload"
+           data-client_id="SEU_CLIENT_ID_DO_GOOGLE_AQUI.apps.googleusercontent.com"
+           data-context="signin"
+           data-ux_mode="popup"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+
+      <button class="btn-google" id="btnGoogleCustom" type="button">
         <img src="Google__G__logo.svg.webp" alt="">
         <span>Fazer login com o Google</span>
       </button>
     </form>
   </main>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="auth.js"></script>
 </body>
 </html>

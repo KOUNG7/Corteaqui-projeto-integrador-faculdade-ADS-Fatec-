@@ -3,74 +3,207 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Entrar | Corte Aqui</title>
+  <title>Agendamento | Corte Aqui</title>
   <link rel="stylesheet" href="styles.css">
 </head>
-    
+
 <body>
-        <header class="cabecalho">
-      <img class="logocorteaqui" src="corteaqui.ico" alt="logo do sistema de agendamento"> 
-      <nav class="navagendamento"> 
-      <h2><a href="index.html" target="_blank">Início</a></h2>
-      <h2><a href="index.html" target="_blank">Serviços</a></h2>
-      <h2><a href="index.html" target="_blank">Contatos</a></h2>
-      </nav> 
-      <div class="botao">
-        <h2><a href="entrar.html" target="_blank">Entrar</a></h2>
-        <h2><a href="index.html" target="_blank">Criar Conta</a></h2>
-      </div>
-      
-      <img class="logosalao"src="logo-newkids.png" alt="logo do salão infantil">
-    </header> 
-    
+  <header class="cabecalho">
+    <img class="logocorteaqui" src="corteaqui.ico" alt="logo do sistema de agendamento">
+    <nav class="navagendamento">
+      <h2><a href="index.html">Início</a></h2>
+      <h2><a href="#precos">Serviços</a></h2>
+      <h2><a href="index.html#contato">Contatos</a></h2>
+    </nav>
+    <div class="botao">
+      <h2><a href="entrar.html">Entrar</a></h2>
+      <h2><a href="Cadastrar.html">Criar conta</a></h2>
+    </div>
+    <img class="logosalao" src="logo-newkids.png" alt="logo do salão infantil">
+  </header>
+
   <main class="agendamento">
-    <section class="apresentacao">
-      <h1>Corte Aqui</h1>
-      <div> 
-      <p>O Corte Aqui é um sistema de agendamento online criado em parceria com o salão infantil New Kids. A ideia é facilitar a vida de quem cuida do pequeno: em vez de ligar e esperar, você escolhe os serviços, o dia e o horário em poucos cliques.</p>
-      <p>Para o salão, o sistema ajuda a organizar a agenda e a manter todos os atendimentos em um só lugar.</p>
+
+    <!-- Faixa de apresentação + horário de funcionamento -->
+    <section class="agendamento-topo">
+      <div class="agendamento-topo-conteudo">
+        <div class="apresentacao">
+          <h1>Corte Aqui</h1>
+          <p>O Corte Aqui é um sistema de agendamento online criado em parceria com o salão infantil New Kids. A ideia é facilitar a vida de quem cuida do pequeno: em vez de ligar e esperar, você escolhe os serviços, o dia e o horário em poucos cliques.</p>
+          <p>Para o salão, o sistema ajuda a organizar a agenda e a manter todos os atendimentos em um só lugar.</p>
+        </div>
+
+        <div class="tabela-horarios-container">
+          <h2>Horário de Funcionamento</h2>
+          <table class="tabela-horarios">
+            <thead>
+              <tr>
+                <th>Dias</th>
+                <th>Horário</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Quarta a Sexta</td>
+                <td>09:30 às 19:00</td>
+              </tr>
+              <tr>
+                <td>Sábado</td>
+                <td>09:30 às 18:00</td>
+              </tr>
+              <tr>
+                <td>Domingo</td>
+                <td>09:30 às 14:00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
 
-    <form class="formulario">
-      <h2>Agende seu horário</h2>
+    <div class="agendamento-conteudo">
 
-      <label for="nome">Nome</label>
-      <input type="text" id="nome" name="nome" autocomplete="name" required>
+      <!-- 1. Formulário -->
+      <form class="formulario" id="formAgendamento">
+        <h2>Agende seu horário</h2>
 
-      <label for="telefone">Telefone</label>
-      <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 90000-0000" required>
+        <div class="formulario-grade">
+          <div class="campo campo-metade">
+            <label for="nome">Nome</label>
+            <input type="text" id="nome" name="nome" autocomplete="name" required>
+          </div>
 
-      <label for="data">Data</label>
-      <input type="date" id="data" name="data" required>
+          <div class="campo campo-metade">
+            <label for="telefone">Telefone</label>
+            <input type="tel" id="telefone" name="telefone" autocomplete="tel" placeholder="(11) 90000-0000" required>
+          </div>
 
-      <label for="horario">Horário</label>
-      <input type="time" id="horario" name="horario" required>
+          <div class="campo campo-terco">
+            <label for="data">Data</label>
+            <input type="date" id="data" name="data" required>
+          </div>
 
-      <label for="pagamento">Forma de pagamento</label>
-      <select id="pagamento" name="pagamento" required>
-        <option value="">Escolha uma opção</option>
-        <option value="pix">Pix</option>
-        <option value="dinheiro">Dinheiro</option>
-        <option value="credito">Cartão de crédito</option>
-        <option value="debito">Cartão de débito</option>
-      </select>
+          <div class="campo campo-terco">
+            <label for="horario">Horário de Início</label>
+            <select id="horario" name="horario" required>
+              <option value="">Selecione a data primeiro</option>
+            </select>
+            <!-- Aviso exibido quando existem horários já reservados no dia escolhido -->
+            <p id="aviso-horarios" class="aviso-horarios" aria-live="polite"></p>
+          </div>
 
-      <section class="servicos">
-        <h2>Serviços</h2>
-        <fieldset>
-          <legend>Escolha um ou mais</legend>
-          <label><input type="checkbox" name="servico" value="corte"> Corte</label>
-          <label><input type="checkbox" name="servico" value="franja"> Franja</label>
-          <label><input type="checkbox" name="servico" value="penteado"> Penteado</label>
-          <label><input type="checkbox" name="servico" value="escova"> Escova</label>
-          <label><input type="checkbox" name="servico" value="hidratacao"> Hidratação</label>
-        </fieldset>
+          <div class="campo campo-terco">
+            <label for="pagamento">Forma de pagamento</label>
+            <select id="pagamento" name="pagamento" required>
+              <option value="">Escolha uma opção</option>
+              <option value="pix">Pix</option>
+              <option value="dinheiro">Dinheiro</option>
+              <option value="credito">Cartão de crédito</option>
+              <option value="debito">Cartão de débito</option>
+            </select>
+          </div>
+
+          <fieldset class="campo campo-total servicos">
+            <legend>Serviços <span>(escolha um ou mais)</span></legend>
+            <div class="servicos-opcoes">
+              <label><input type="checkbox" name="servico" value="corte"> Corte (30 min)</label>
+              <label><input type="checkbox" name="servico" value="franja"> Franja (30 min)</label>
+              <label><input type="checkbox" name="servico" value="penteado"> Penteado (1h)</label>
+              <label><input type="checkbox" name="servico" value="escova"> Escova (1h)</label>
+              <label><input type="checkbox" name="servico" value="hidratacao"> Hidratação (1h)</label>
+            </div>
+          </fieldset>
+        </div>
+
+        <!-- Campo oculto para enviar o horário de término calculado para o Make -->
+        <input type="hidden" id="horario_fim" name="horario_fim">
+
+        <button type="submit" class="confirmar">Confirmar agendamento</button>
+      </form>
+
+      <!-- 2. Tabela de serviços + destaque do desconto -->
+      <section class="precos" id="precos" aria-labelledby="titulo-precos">
+        <h2 id="titulo-precos">Tabela de serviços</h2>
+
+        <div class="precos-grade">
+          <table class="tabela-precos">
+            <caption class="visualmente-oculto">Preços e duração dos serviços</caption>
+            <thead>
+              <tr>
+                <th scope="col">Serviço</th>
+                <th scope="col">Duração</th>
+                <th scope="col">Preço</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">Corte infantil <span class="etiqueta">Masculino e feminino</span></th>
+                <td>30 min</td>
+                <td>
+                  <span class="preco">R$ 60,00</span>
+                  <span class="preco-promo">Qua e qui: R$ 55,00</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Corte adulto <span class="etiqueta">Masculino e feminino</span></th>
+                <td>30 min</td>
+                <td>
+                  <span class="preco">R$ 60,00</span>
+                  <span class="preco-promo">Qua e qui: R$ 55,00</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Franja</th>
+                <td>30 min</td>
+                <td><span class="preco">R$ 30,00</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Penteado</th>
+                <td>1 h</td>
+                <td>
+                  <span class="preco">R$ 70 a R$ 130</span>
+                  <span class="preco-obs">Valor não fixo</span>
+                </td>
+              </tr>
+              <tr>
+                <th scope="row">Escova</th>
+                <td>1 h</td>
+                <td><span class="preco">R$ 70,00</span></td>
+              </tr>
+              <tr>
+                <th scope="row">Hidratação</th>
+                <td>1 h</td>
+                <td><span class="preco">R$ 60,00</span></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <aside class="promo-card" aria-label="Desconto de quartas e quintas">
+            <span class="selo selo-amarelo">Desconto</span>
+            <p class="promo-dias">Quartas e quintas</p>
+            <p class="promo-de">De <s>R$ 60,00</s> por</p>
+            <p class="promo-preco"><strong>R$ 55,00</strong></p>
+            <p class="promo-desc">Corte infantil e corte adulto, masculino e feminino.</p>
+          </aside>
+        </div>
       </section>
 
-      <button type="submit" class="confirmar">Confirmar agendamento</button>
-    </form>
+      <!-- 3. Outra forma de agendar -->
+      <section class="whatsapp-agendamento" aria-labelledby="titulo-whatsapp">
+        <div class="whatsapp-texto">
+          <h2 id="titulo-whatsapp">Prefere agendar pelo WhatsApp?</h2>
+          <p>Essa é outra forma de agendar o seu horário. Ao chamar o salão no WhatsApp, você é respondido pela assistente automática (IA) e, se preferir, também pode conversar com uma atendente do salão.</p>
+        </div>
+        <a class="botao-whatsapp" href="https://wa.me/5511994824623?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20hor%C3%A1rio." target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+          </svg>
+          <span>Agendar pelo WhatsApp</span>
+        </a>
+      </section>
+
+    </div>
   </main>
 <script src="script.js"></script>
 </body>
-</html> 
+</html>

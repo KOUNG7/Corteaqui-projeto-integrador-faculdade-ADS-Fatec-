@@ -13,7 +13,6 @@
     <nav class="navagendamento">
       <h2><a href="index.html">Início</a></h2>
       <h2><a href="agendamento.html">Agendamento</a></h2>
-      
     </nav>
 
     <div class="botao">
@@ -24,7 +23,7 @@
   </header>
 
   <main class="entrarmain">
-    <form class="entrar" action="#" method="post">
+    <form class="entrar" id="formCadastro" action="#" method="post">
       <div class="nomemarca">
         <h1>CorteAqui</h1>
         <p>Crie sua conta para agendar o horário</p>
@@ -49,7 +48,7 @@
 
       <button class="botao-entrar" type="submit">Criar conta</button>
 
-      <p class="conta">Já tem conta? <a href="login.html">Entrar</a></p>
+      <p class="conta">Já tem conta? <a href="entrar.html">Entrar</a></p>
 
       <div class="pular">
         <hr>
@@ -57,7 +56,16 @@
         <hr>
       </div>
 
-      <button class="btn-google" type="button">
+      <!-- Container oficial do Botão Google Identity Services -->
+      <div id="g_id_onload"
+           data-client_id="SEU_CLIENT_ID_DO_GOOGLE_AQUI.apps.googleusercontent.com"
+           data-context="signup"
+           data-ux_mode="popup"
+           data-callback="handleCredentialResponse"
+           data-auto_prompt="false">
+      </div>
+
+      <button class="btn-google" id="btnGoogleCustom" type="button">
         <img src="Google__G__logo.svg.webp" alt="">
         <span>Cadastrar com o Google</span>
       </button>
@@ -65,5 +73,8 @@
       <a class="link-pular" href="agendamento.html">Pular</a>
     </form>
   </main>
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="auth.js"></script>
 </body>
 </html>

@@ -47,43 +47,67 @@
       </div>
     </section>
 
-    <section class="servicos-destaque" id="servicos">
-      <h2>Nossos serviços</h2>
-      <div class="cartoes">
-        <article class="cartao-servico">
-          <h3>Corte infantil</h3>
-          <img src="corte.png" alt="Exemplo de corte infantil">
-        </article>
-        <article class="cartao-servico">
-          <h3>Penteado</h3>
-          <img src="penteado.png" alt="Exemplo de penteado">
-        </article>
-        <article class="cartao-servico">
-          <h3>Escova</h3>
-          <img src="escova.png" alt="Exemplo de escova">
-        </article>
-      </div>
-    </section>
+    <section class="servicos-destaque" id="servicos" aria-labelledby="titulo-servicos">
+      <h2 id="titulo-servicos">Nossos serviços</h2>
 
-    <section class="tabela-servicos" id="precos">
-      <h2>Tabela de serviços</h2>
-      <table>
-        <caption class="visualmente-oculto">Preços dos serviços</caption>
-        <thead>
-          <tr>
-            <th scope="col">Serviço</th>
-            <th scope="col">Preço</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><th scope="row">Corte infantil</th><td>R$ 00,00</td></tr>
-          <tr><th scope="row">Corte adulto</th><td>R$ 00,00</td></tr>
-          <tr><th scope="row">Franja</th><td>R$ 00,00</td></tr>
-          <tr><th scope="row">Penteado</th><td>R$ 00,00</td></tr>
-          <tr><th scope="row">Escova</th><td>R$ 00,00</td></tr>
-          <tr><th scope="row">Hidratação</th><td>R$ 00,00</td></tr>
-        </tbody>
-      </table>
+      <div class="carrossel" role="region" aria-roledescription="carrossel" aria-label="Serviços do salão">
+        <div class="carrossel-janela">
+          <div class="carrossel-pista">
+
+            <article class="slide" role="group" aria-roledescription="slide" aria-label="Corte infantil e adulto, 1 de 3">
+              <div class="slide-foto">
+                <img src="corte.png" alt="Exemplo de corte infantil">
+              </div>
+              <div class="slide-info">
+                <h3>Corte infantil e adulto</h3>
+                <span class="etiqueta">Masculino e feminino</span>
+                <p class="slide-preco">R$ 60,00</p>
+                <p class="slide-promo">Quartas e quintas: R$ 55,00</p>
+                <a class="botao-agendar" href="agendamento.html">Agendar horário</a>
+              </div>
+            </article>
+
+            <article class="slide" role="group" aria-roledescription="slide" aria-label="Penteado, 2 de 3">
+              <div class="slide-foto">
+                <img src="penteado.png" alt="Exemplo de penteado" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>Penteado</h3>
+                <p class="slide-preco">R$ 70 a R$ 130</p>
+                <p class="slide-obs">O valor não é fixo e varia dentro dessa faixa.</p>
+                <a class="botao-agendar" href="agendamento.html">Agendar horário</a>
+              </div>
+            </article>
+
+            <article class="slide" role="group" aria-roledescription="slide" aria-label="Escova, 3 de 3">
+              <div class="slide-foto">
+                <img src="escova.png" alt="Exemplo de escova" loading="lazy">
+              </div>
+              <div class="slide-info">
+                <h3>Escova</h3>
+                <p class="slide-preco">R$ 70,00</p>
+                <a class="botao-agendar" href="agendamento.html">Agendar horário</a>
+              </div>
+            </article>
+
+          </div>
+
+          <button type="button" class="carrossel-seta carrossel-seta-anterior" aria-label="Serviço anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+          </button>
+          <button type="button" class="carrossel-seta carrossel-seta-proximo" aria-label="Próximo serviço">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+          </button>
+        </div>
+
+        <div class="carrossel-rodape">
+          <div class="carrossel-pontos"></div>
+        </div>
+      </div>
+
+      <div class="acao">
+        <a class="botao-link" href="agendamento.html#precos">Ver tabela completa de preços</a>
+      </div>
     </section>
 
     <section class="contato" id="contato">
@@ -112,7 +136,14 @@
     </section>
 
     <section class="avaliacoes">
-      <h2>O que dizem os clientes</h2>
+      <div class="avaliacoes-topo">
+        <h2>O que dizem os clientes</h2>
+        <span class="selo-google">
+          <img src="Google__G__logo.svg.webp" alt="" width="28" height="28">
+          <span>Avaliações no Google</span>
+        </span>
+      </div>
+
       <div class="cartoes">
         <figure class="avaliacao">
           <span class="estrelas" role="img" aria-label="Nota 5 de 5">★★★★★</span>
@@ -135,5 +166,7 @@
       </div>
     </section>
   </main>
+
+  <script src="Carrosel.js"></script>
 </body>
 </html>
