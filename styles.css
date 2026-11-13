@@ -1224,6 +1224,10 @@ body {
     white-space: nowrap;
 }
 
+.btn-google,
+.pular {
+    display: none;
+}
 
 @media (max-width: 900px) {
     .agendamento-topo-conteudo,

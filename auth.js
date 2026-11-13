@@ -2,7 +2,7 @@
 // URLs DOS WEBHOOKS DO MAKE
 // =========================================================================
 const WEBHOOK_CADASTRO = "https://hook.us2.make.com/oze3i52yd2cevi69jg1wxsko67r78k4e";
-const WEBHOOK_LOGIN = "https://hook.us2.make.com/SEU_WEBHOOK_LOGIN";   // trocar quando criar o cenário de login
+const WEBHOOK_LOGIN = "https://hook.us2.make.com/oze3i52yd2cevi69jg1wxsko67r78k4e"; // mesmo webhook do cadastro; o campo "acao" separa os dois
 const WEBHOOK_GOOGLE = "https://hook.us2.make.com/SEU_WEBHOOK_GOOGLE"; // trocar quando criar o cenário do Google
 
 // Verifica se uma URL ainda é o texto de exemplo
